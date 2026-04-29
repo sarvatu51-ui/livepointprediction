@@ -1,0 +1,181 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo-icon { font-size: 22px; }
+.logo-accent { color: var(--accent-bright); }
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.nav-link {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.nav-link:hover { color: var(--text-primary); background: var(--bg-card); }
+.nav-link.active { color: var(--text-primary); background: var(--bg-card); }
+.nav-admin { color: var(--amber) !important; }
+
+.navbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.points-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 999px;
+  padding: 5px 14px;
+}
+
+.points-icon { font-size: 14px; }
+.points-amount { font-family: var(--font-mono); font-weight: 700; font-size: 14px; color: var(--amber); }
+.points-label { font-size: 11px; color: var(--text-muted); }
+
+.user-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  transition: background var(--transition);
+}
+.user-menu:hover { background: var(--bg-card); }
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.user-name { font-size: 14px; font-weight: 500; }
+.chevron { font-size: 11px; color: var(--text-muted); }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  min-width: 180px;
+  box-shadow: var(--shadow-card);
+  animation: fadeIn 0.15s ease;
+}
+
+.dropdown-header {
+  padding: 8px 10px 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 6px;
+}
+.dropdown-name { font-weight: 600; font-size: 14px; }
+.dropdown-email { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.dropdown-item:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.dropdown-item.danger:hover { color: var(--red); }
+
+.auth-buttons { display: flex; gap: 8px; }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  color: var(--text-primary);
+  font-size: 18px;
+  padding: 6px;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  gap: 4px;
+}
+
+.mobile-link {
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 15px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.mobile-link:hover { color: var(--text-primary); background: var(--bg-card); }
+.mobile-link.danger:hover { color: var(--red); }
+
+@media (max-width: 768px) {
+  .navbar-links { display: none; }
+  .user-name, .chevron { display: none; }
+  .mobile-toggle { display: block; }
+  .points-pill { padding: 5px 10px; }
+  .points-label { display: none; }
+}

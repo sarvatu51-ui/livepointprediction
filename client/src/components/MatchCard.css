@@ -1,0 +1,200 @@
+.match-card {
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.match-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--border);
+  transition: background 0.2s ease;
+}
+
+.match-card.live::before { background: var(--red); }
+.match-card.upcoming::before { background: var(--amber); }
+.match-card.ended::before { background: var(--text-muted); }
+
+.match-card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.match-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.match-sport {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.your-bet-badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  background: rgba(79, 70, 229, 0.15);
+  color: var(--accent-bright);
+  border-radius: 999px;
+  border: 1px solid rgba(79, 70, 229, 0.3);
+}
+
+.match-teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.team-right { align-items: center; }
+
+.team-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  font-family: var(--font-display);
+  color: var(--text-secondary);
+}
+
+.team-name {
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.match-vs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.vs-text {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.live-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: pulse 1.5s infinite;
+}
+
+.result-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.result-chip.won { background: var(--green-glow); color: var(--green); }
+.result-chip.lost { background: var(--red-glow); color: var(--red); }
+
+/* Odds buttons */
+.odds-row {
+  display: flex;
+  gap: 8px;
+}
+
+.odds-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.odds-btn:hover:not(:disabled) {
+  background: rgba(79, 70, 229, 0.12);
+  border-color: var(--accent);
+}
+
+.odds-btn.selected {
+  background: rgba(79, 70, 229, 0.2);
+  border-color: var(--accent);
+}
+
+.odds-btn:disabled { cursor: default; }
+
+.odds-team {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.draw-btn { flex: 0.7; }
+
+/* Bet result bar */
+.bet-result-bar {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+.bet-result-bar.won { background: var(--green-glow); color: var(--green); }
+.bet-result-bar.lost { background: var(--red-glow); color: var(--red); }
+.bet-result-bar.pending { background: var(--accent-glow); color: var(--accent-bright); }
+
+/* Popularity bar */
+.popularity-bar {
+  display: flex;
+  height: 3px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 14px;
+  background: var(--bg-secondary);
+}
+
+.pop-a { background: var(--accent); transition: width 0.5s ease; min-width: 3px; }
+.pop-b { background: var(--cyan); flex: 1; }

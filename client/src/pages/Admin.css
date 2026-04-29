@@ -1,0 +1,168 @@
+.admin-page { padding: 40px 0 60px; }
+
+.admin-header { margin-bottom: 32px; }
+.admin-title { font-size: 32px; }
+.admin-sub { color: var(--text-muted); margin-top: 4px; }
+
+.admin-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  margin-bottom: 24px;
+  width: fit-content;
+}
+
+.admin-tab {
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.admin-tab:hover { color: var(--text-primary); }
+.admin-tab.active { background: var(--bg-card-hover); color: var(--text-primary); font-weight: 600; }
+
+.admin-form-card { padding: 28px; }
+.form-section-title { font-size: 20px; margin-bottom: 20px; }
+
+.admin-form { display: flex; flex-direction: column; gap: 16px; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.admin-matches { display: flex; flex-direction: column; gap: 16px; }
+
+.admin-match-card {
+  padding: 20px;
+  border-left: 3px solid var(--border);
+}
+.admin-match-card.live { border-left-color: var(--red); }
+.admin-match-card.upcoming { border-left-color: var(--amber); }
+.admin-match-card.ended { border-left-color: var(--text-muted); }
+
+.am-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.am-teams { display: flex; align-items: center; gap: 10px; }
+.am-team { font-weight: 700; font-family: var(--font-display); font-size: 16px; }
+.am-vs { font-size: 12px; color: var(--text-muted); font-family: var(--font-mono); }
+.am-meta { display: flex; align-items: center; gap: 8px; }
+.am-sport { font-size: 12px; color: var(--text-muted); }
+
+.am-odds-row { margin-bottom: 16px; }
+
+.odds-display-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.odds-chip {
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+}
+.odds-chip strong { color: var(--cyan); font-family: var(--font-mono); }
+
+.odds-edit { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.odds-edit-input { max-width: 100px !important; }
+.odds-sep { color: var(--text-muted); font-size: 13px; }
+
+.am-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.action-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.action-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.result-declared { font-size: 13px; color: var(--green); font-weight: 600; }
+
+.ml-auto { margin-left: auto; }
+
+.empty-admin {
+  text-align: center;
+  padding: 60px;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  box-shadow: var(--shadow-card);
+  animation: slideInUp 0.3s ease;
+}
+
+/* ── Transactions ── */
+.txn-filter-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.pending-count { font-family: var(--font-mono); font-size: 13px; color: var(--amber); font-weight: 700; }
+
+.txn-list { display: flex; flex-direction: column; gap: 14px; }
+
+.txn-admin-card { padding: 18px; border-left: 3px solid var(--border); }
+.txn-admin-card.pending { border-left-color: var(--amber); }
+.txn-admin-card.approved { border-left-color: var(--green); }
+.txn-admin-card.rejected { border-left-color: var(--red); }
+
+.txn-admin-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+.txn-user-info { display: flex; align-items: center; gap: 12px; }
+.txn-user-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
+.txn-user-name { font-weight: 600; font-size: 15px; }
+.txn-user-email { font-size: 12px; color: var(--text-muted); }
+.txn-user-balance { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+.txn-user-balance strong { color: var(--amber); font-family: var(--font-mono); }
+.txn-details { display: flex; flex-direction: column; gap: 3px; }
+.txn-type { font-weight: 700; font-size: 15px; }
+.txn-type.deposit { color: var(--green); }
+.txn-type.withdrawal { color: var(--red); }
+.txn-amount { font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--text-primary); }
+.txn-date { font-size: 12px; color: var(--text-muted); }
+.txn-ref { font-size: 12px; color: var(--text-secondary); font-family: var(--font-mono); }
+.txn-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.txn-note { font-size: 12px; color: var(--text-muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+.txn-badge { background: var(--amber); color: black; font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 999px; font-family: var(--font-mono); margin-left: 6px; }
+
+/* ── Sessions ── */
+.am-sessions { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+.sessions-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.no-sessions { font-size: 13px; color: var(--text-muted); }
+
+.sessions-admin-list { display: flex; flex-direction: column; gap: 8px; }
+.session-admin-row { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--bg-secondary); border-radius: var(--radius-sm); border: 1px solid var(--border); flex-wrap: wrap; }
+.session-admin-row.settled { opacity: 0.6; }
+.session-admin-label { font-weight: 600; font-size: 13px; flex: 1; }
+.session-admin-line { font-size: 12px; color: var(--amber); font-family: var(--font-mono); }
+.session-status-dot { font-size: 12px; }
+.session-status-dot.open { color: var(--green); }
+.session-status-dot.closed { color: var(--red); }
+.session-status-dot.settled { color: var(--text-muted); }
+
+.am-score { font-family: var(--font-mono); font-size: 13px; color: var(--cyan); background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: var(--radius-sm); padding: 8px 14px; margin-bottom: 12px; display: flex; gap: 12px; flex-wrap: wrap; }
+.score-sep { color: var(--text-muted); }
+.cricket-tag { font-size: 11px; padding: 2px 8px; background: rgba(16,185,129,0.1); color: var(--green); border-radius: 999px; border: 1px solid rgba(16,185,129,0.25); }

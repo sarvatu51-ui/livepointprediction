@@ -1,0 +1,25 @@
+/* Add to the bottom of index.css */
+.loading-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+}
+
+.loading-content {
+  text-align: center;
+  animation: pulse 1.5s infinite;
+}
+
+.loading-logo {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.loading-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-bright);
+}
