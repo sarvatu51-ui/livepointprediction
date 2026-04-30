@@ -1,18 +1,12 @@
 import axios from 'axios';
 
-// Auto-detect backend URL
-// In production (Vercel): uses REACT_APP_API_URL env variable
-// In development (local): uses proxy via package.json
-const BASE_URL = process.env.REACT_APP_API_URL
-  ? process.env.REACT_APP_API_URL + '/api'
-  : '/api';
+const BASE_URL = 'https://livepointprediction.onrender.com/api';
 
 const api = axios.create({
   baseURL: BASE_URL,
   headers: { 'Content-Type': 'application/json' }
 });
 
-// Auto-attach JWT token to every request
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -21,7 +15,6 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle auth errors globally
 api.interceptors.response.use(
   (response) => response,
   (error) => {
