@@ -10,15 +10,14 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Leaderboard from './pages/Leaderboard';
 import Admin from './pages/Admin';
+import MatchDetail from './pages/MatchDetail';
 
-// Protected route - redirects to login if not authenticated
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
   if (loading) return <div className="loading-screen"><div className="loading-content"><div className="loading-logo">⚡</div><div className="loading-text">LivePointPredict</div></div></div>;
   return user ? children : <Navigate to="/login" />;
 };
 
-// Admin-only route
 const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
   if (loading) return <div className="loading-screen"><div className="loading-content"><div className="loading-logo">⚡</div><div className="loading-text">LivePointPredict</div></div></div>;
@@ -29,17 +28,14 @@ const AdminRoute = ({ children }) => {
 
 const AppRoutes = () => {
   const { loading } = useAuth();
-
-  if (loading) {
-    return (
-      <div className="loading-screen">
-        <div className="loading-content">
-          <div className="loading-logo">⚡</div>
-          <div className="loading-text">LivePointPredict</div>
-        </div>
+  if (loading) return (
+    <div className="loading-screen">
+      <div className="loading-content">
+        <div className="loading-logo">⚡</div>
+        <div className="loading-text">LivePointPredict</div>
       </div>
-    );
-  }
+    </div>
+  );
 
   return (
     <>
@@ -48,13 +44,12 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/match/:id" element={<MatchDetail />} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-
-      {/* WhatsApp support button - visible on all pages */}
       <WhatsAppButton />
     </>
   );
