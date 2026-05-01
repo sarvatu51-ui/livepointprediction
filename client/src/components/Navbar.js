@@ -19,7 +19,6 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-        {/* Logo */}
         <Link to="/" className="navbar-logo">
           <span className="logo-icon">⚡</span>
           <span className="logo-text">
@@ -27,26 +26,22 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop Nav Links */}
         {user && (
           <div className="navbar-links">
             <Link to="/" className={`nav-link ${isActive('/')}`}>Matches</Link>
             <Link to="/dashboard" className={`nav-link ${isActive('/dashboard')}`}>Dashboard</Link>
-            <Link to="/leaderboard" className={`nav-link ${isActive('/leaderboard')}`}>Leaderboard</Link>
             {user.role === 'admin' && (
               <Link to="/admin" className={`nav-link nav-admin ${isActive('/admin')}`}>Admin</Link>
             )}
           </div>
         )}
 
-        {/* Right Side */}
         <div className="navbar-right">
           {user ? (
             <>
               <div className="points-pill">
-                <span className="points-icon">🪙</span>
+                <span className="points-icon">₹</span>
                 <span className="points-amount">{user.points?.toLocaleString()}</span>
-                <span className="points-label">pts</span>
               </div>
               <div className="user-menu" onClick={() => setMenuOpen(!menuOpen)}>
                 <div className="user-avatar">{user.name?.charAt(0).toUpperCase()}</div>
@@ -74,20 +69,16 @@ const Navbar = () => {
               <Link to="/register" className="btn btn-primary btn-sm">Sign Up</Link>
             </div>
           )}
-
-          {/* Mobile menu toggle */}
           <button className="mobile-toggle" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? '✕' : '☰'}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && user && (
         <div className="mobile-menu">
           <Link to="/" className="mobile-link" onClick={() => setMenuOpen(false)}>Matches</Link>
           <Link to="/dashboard" className="mobile-link" onClick={() => setMenuOpen(false)}>Dashboard</Link>
-          <Link to="/leaderboard" className="mobile-link" onClick={() => setMenuOpen(false)}>Leaderboard</Link>
           {user.role === 'admin' && (
             <Link to="/admin" className="mobile-link" onClick={() => setMenuOpen(false)}>Admin Panel</Link>
           )}
