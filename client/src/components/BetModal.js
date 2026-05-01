@@ -24,7 +24,7 @@ const BetModal = ({ match, selectedTeam, onClose, onSuccess }) => {
 
   const handleBet = async () => {
     setError('');
-    if (points < 10) return setError('Minimum bet is 10 points.');
+    if (points < 10) return setError('Minimum bet is 100 points.');
     if (points > user.points) return setError('Not enough points!');
 
     setLoading(true);
@@ -89,7 +89,7 @@ const BetModal = ({ match, selectedTeam, onClose, onSuccess }) => {
         <div className="modal-section">
           <label className="form-label">Points to Bet</label>
           <div className="points-input-wrap">
-            <span className="points-icon-input">🪙</span>
+            <span className="points-icon-input">₹</span>
             <input
               type="number"
               className="form-input points-input"
