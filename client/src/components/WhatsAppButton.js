@@ -3,7 +3,7 @@ import './WhatsAppButton.css';
 
 // Replace the number below with your WhatsApp number (include country code, no + or spaces)
 // Example: India number 9876543210 → 919876543210
-const WHATSAPP_NUMBER = '919999999999'; // ← CHANGE THIS TO YOUR NUMBER
+const WHATSAPP_NUMBER = '916205329907'; // ← CHANGE THIS TO YOUR NUMBER
 const WHATSAPP_MESSAGE = 'Hi! I need help with LivePointPredict.';
 
 const WhatsAppButton = () => {
