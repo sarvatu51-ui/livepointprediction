@@ -124,4 +124,8 @@
   .hero-cta { text-align: left; }
   .matches-grid { grid-template-columns: 1fr; }
   .filter-tab span:not(.live-dot):not(.live-count) { display: none; }
+  .hero-accent {
+    justify-content: center;
+    font-size: 13px;
+  }
 }
