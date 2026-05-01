@@ -18,8 +18,13 @@
   font-weight: 800;
 }
 
-.hero-accent { color: var(--accent-bright); }
-
+.hero-accent {
+  display: block;
+  font-size: clamp(14px, 2vw, 18px); /* perfect range */
+  font-weight: 500;
+  margin-top: 10px;
+  color: var(--text-secondary);
+}
 .hero-sub {
   margin-top: 12px;
   color: var(--text-secondary);
