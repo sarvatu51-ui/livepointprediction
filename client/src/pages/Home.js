@@ -112,17 +112,17 @@ const Home = () => {
         <div className="home-hero">
           <div className="hero-text">
             <h1 className="hero-title">
-              Predict. Win.<br />
-              <span className="hero-accent">Dominate.</span>
+               Why Choose Us? <br />
+              <span className="hero-accent"> Live Games|Easy to Pay|Safe & Secured|24x7 Customer Support| </span>
             </h1>
-            <p className="hero-sub">Make live predictions on matches. Earn virtual points. Climb the leaderboard.</p>
+            <p className="hero-sub">India's Leading Betting Site.</p>
           </div>
           {!user && (
             <div className="hero-cta">
               <button className="btn btn-primary btn-lg" onClick={() => navigate('/register')}>
-                Start with 1000 Points →
+                Create Account Now →
               </button>
-              <p className="hero-note">Free to play. Virtual points only.</p>
+              <p className="hero-note"> Real Money Game. </p>
             </div>
           )}
         </div>
