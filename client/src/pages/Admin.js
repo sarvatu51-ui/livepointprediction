@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
 import { useSocket } from '../context/SocketContext';
+import TransactionStats from '../components/TransactionStats';
 import './Admin.css';
 
 const Admin = () => {
@@ -337,51 +338,52 @@ const Admin = () => {
         {tab === 'transactions' && (
           <div className="admin-transactions">
             <div className="txn-filter-row">
-              <h2 className="section-title">💳 All Transaction Requests</h2>
+              <h2 className="section-title">💳 Transaction Dashboard</h2>
               <span className="pending-count">{pendingTxns.length} pending</span>
             </div>
-            {transactions.length === 0 ? (
-              <div className="empty-admin">No transactions yet.</div>
-            ) : (
-              <div className="txn-list">
-                {transactions.map(txn => (
-                  <div key={txn._id} className={`txn-admin-card card ${txn.status}`}>
-                    <div className="txn-admin-header">
-                      <div className="txn-user-info">
-                        <div className="txn-user-avatar">{txn.userId?.name?.charAt(0)}</div>
-                        <div>
-                          <div className="txn-user-name">{txn.userId?.name}</div>
-                          <div className="txn-user-email">{txn.userId?.email}</div>
-                          <div className="txn-user-balance">Current balance: <strong>{txn.userId?.points?.toLocaleString()} pts</strong></div>
+
+            {/* Pending requests always visible at top */}
+            {pendingTxns.length > 0 && (
+              <div className="pending-requests-section">
+                <div className="pending-section-title">⚡ Pending — Action Required</div>
+                <div className="txn-list">
+                  {pendingTxns.map(txn => (
+                    <div key={txn._id} className="txn-admin-card card pending">
+                      <div className="txn-admin-header">
+                        <div className="txn-user-info">
+                          <div className="txn-user-avatar">{txn.userId?.name?.charAt(0)}</div>
+                          <div>
+                            <div className="txn-user-name">{txn.userId?.name}</div>
+                            <div className="txn-user-email">{txn.userId?.email}</div>
+                            <div className="txn-user-balance">Balance: <strong>{txn.userId?.points?.toLocaleString()} pts</strong></div>
+                          </div>
+                        </div>
+                        <div className="txn-details">
+                          <div className={`txn-type ${txn.type}`}>{txn.type === 'deposit' ? '💰 Deposit' : '💸 Withdrawal'}</div>
+                          <div className="txn-amount">{txn.points?.toLocaleString()} pts</div>
+                          <div className="txn-date">{new Date(txn.createdAt).toLocaleString()}</div>
+                          {txn.reference && <div className="txn-ref">Ref: {txn.reference}</div>}
+                        </div>
+                        <div className="txn-status-col">
+                          <span className="result-badge pending">⏳ Pending</span>
                         </div>
                       </div>
-                      <div className="txn-details">
-                        <div className={`txn-type ${txn.type}`}>{txn.type === 'deposit' ? '💰 Deposit Request' : '💸 Withdrawal Request'}</div>
-                        <div className="txn-amount">{txn.points?.toLocaleString()} pts</div>
-                        <div className="txn-date">{new Date(txn.createdAt).toLocaleString()}</div>
-                        {txn.reference && <div className="txn-ref">Ref: {txn.reference}</div>}
-                      </div>
-                      <div className="txn-status-col">
-                        <span className={`result-badge ${txn.status === 'approved' ? 'won' : txn.status === 'rejected' ? 'lost' : 'pending'}`}>
-                          {txn.status === 'approved' ? '✅ Approved' : txn.status === 'rejected' ? '❌ Rejected' : '⏳ Pending'}
-                        </span>
-                      </div>
-                    </div>
-                    {txn.status === 'pending' && (
                       <div className="txn-actions">
                         <button className="btn btn-success btn-sm" onClick={() => processTransaction(txn._id, 'approve')}>
-                          ✅ Approve {txn.type === 'deposit' ? `(Add ${txn.points} pts)` : `(Process withdrawal)`}
+                          ✅ Approve {txn.type === 'deposit' ? `(Add ${txn.points} pts)` : '(Pay & Confirm)'}
                         </button>
                         <button className="btn btn-danger btn-sm" onClick={() => processTransaction(txn._id, 'reject', 'Rejected by admin')}>
                           ❌ Reject {txn.type === 'withdrawal' ? '(Refund pts)' : ''}
                         </button>
                       </div>
-                    )}
-                    {txn.note && <div className="txn-note">Note: {txn.note}</div>}
-                  </div>
-                ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
+
+            {/* Stats + History with filters */}
+            <TransactionStats transactions={transactions} />
           </div>
         )}
       </div>
