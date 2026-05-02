@@ -9,20 +9,33 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Leaderboard from './pages/Leaderboard';
-import CasinoPage from './pages/CasinoPage';
 import Admin from './pages/Admin';
 import MatchDetail from './pages/MatchDetail';
-
+import CasinoPage from './pages/CasinoPage';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  if (loading) return <div className="loading-screen"><div className="loading-content"><div className="loading-logo">⚡</div><div className="loading-text">LivePointPredict</div></div></div>;
+  if (loading) return (
+    <div className="loading-screen">
+      <div className="loading-content">
+        <div className="loading-logo">⚡</div>
+        <div className="loading-text">LivePointPredict</div>
+      </div>
+    </div>
+  );
   return user ? children : <Navigate to="/login" />;
 };
 
 const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  if (loading) return <div className="loading-screen"><div className="loading-content"><div className="loading-logo">⚡</div><div className="loading-text">LivePointPredict</div></div></div>;
+  if (loading) return (
+    <div className="loading-screen">
+      <div className="loading-content">
+        <div className="loading-logo">⚡</div>
+        <div className="loading-text">LivePointPredict</div>
+      </div>
+    </div>
+  );
   if (!user) return <Navigate to="/login" />;
   if (user.role !== 'admin') return <Navigate to="/" />;
   return children;
@@ -49,7 +62,7 @@ const AppRoutes = () => {
         <Route path="/match/:id" element={<MatchDetail />} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/leaderboard" element={<Leaderboard />} />
-<Route path="/casino" element={<ProtectedRoute><CasinoPage /></ProtectedRoute>} />
+        <Route path="/casino" element={<ProtectedRoute><CasinoPage /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
