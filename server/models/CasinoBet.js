@@ -1,8 +1,16 @@
 const mongoose = require('mongoose');
 
 const casinoBetSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  game: { type: String, enum: ['aviator', 'mines', 'teen_patti', 'rummy'], required: true },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  game: {
+    type: String,
+    enum: ['aviator', 'mines', 'teen_patti', 'rummy'],
+    required: true
+  },
   stake: { type: Number, required: true, min: 1 },
   payout: { type: Number, required: true, min: 0 },
   multiplier: { type: Number, required: true, min: 0 },
@@ -14,3 +22,4 @@ const casinoBetSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 module.exports = mongoose.model('CasinoBet', casinoBetSchema);
+
