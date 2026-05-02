@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import http from '../api/http';
+import http from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 
 const CasinoPage = () => {
