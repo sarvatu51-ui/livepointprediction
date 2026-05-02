@@ -19,6 +19,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-inner">
+        {/* Logo */}
         <Link to="/" className="navbar-logo">
           <span className="logo-icon">⚡</span>
           <span className="logo-text">
@@ -26,22 +27,24 @@ const Navbar = () => {
           </span>
         </Link>
 
+        {/* Desktop Nav Links */}
         {user && (
           <div className="navbar-links">
-            <Link to="/" className={`nav-link ${isActive('/')}`}>Matches</Link>
-            <Link to="/dashboard" className={`nav-link ${isActive('/dashboard')}`}>Dashboard</Link>
-<Link to="/casino" className={`nav-link ${isActive('/casino')}`}>🎮 Casino</Link>
+            <Link to="/" className={`nav-link ${isActive('/')}`}>🏏 Matches</Link>
+            <Link to="/casino" className={`nav-link ${isActive('/casino')}`}>🎰 Casino</Link>
+            <Link to="/dashboard" className={`nav-link ${isActive('/dashboard')}`}>📊 Dashboard</Link>
             {user.role === 'admin' && (
-              <Link to="/admin" className={`nav-link nav-admin ${isActive('/admin')}`}>Admin</Link>
+              <Link to="/admin" className={`nav-link nav-admin ${isActive('/admin')}`}>⚙️ Admin</Link>
             )}
           </div>
         )}
 
+        {/* Right Side */}
         <div className="navbar-right">
           {user ? (
             <>
               <div className="points-pill">
-                <span className="points-icon">₹</span>
+                <span className="points-icon">🪙</span>
                 <span className="points-amount">{user.points?.toLocaleString()}</span>
               </div>
               <div className="user-menu" onClick={() => setMenuOpen(!menuOpen)}>
@@ -56,6 +59,9 @@ const Navbar = () => {
                     </div>
                     <Link to="/dashboard" className="dropdown-item" onClick={() => setMenuOpen(false)}>
                       📊 Dashboard
+                    </Link>
+                    <Link to="/casino" className="dropdown-item" onClick={() => setMenuOpen(false)}>
+                      🎰 Casino
                     </Link>
                     <button className="dropdown-item danger" onClick={handleLogout}>
                       🚪 Logout
@@ -76,14 +82,16 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {menuOpen && user && (
         <div className="mobile-menu">
-          <Link to="/" className="mobile-link" onClick={() => setMenuOpen(false)}>Matches</Link>
-          <Link to="/dashboard" className="mobile-link" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+          <Link to="/" className="mobile-link" onClick={() => setMenuOpen(false)}>🏏 Matches</Link>
+          <Link to="/casino" className="mobile-link" onClick={() => setMenuOpen(false)}>🎰 Casino</Link>
+          <Link to="/dashboard" className="mobile-link" onClick={() => setMenuOpen(false)}>📊 Dashboard</Link>
           {user.role === 'admin' && (
-            <Link to="/admin" className="mobile-link" onClick={() => setMenuOpen(false)}>Admin Panel</Link>
+            <Link to="/admin" className="mobile-link" onClick={() => setMenuOpen(false)}>⚙️ Admin</Link>
           )}
-          <button className="mobile-link danger" onClick={handleLogout}>Logout</button>
+          <button className="mobile-link danger" onClick={handleLogout}>🚪 Logout</button>
         </div>
       )}
     </nav>
