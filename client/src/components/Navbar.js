@@ -30,6 +30,7 @@ const Navbar = () => {
           <div className="navbar-links">
             <Link to="/" className={`nav-link ${isActive('/')}`}>Matches</Link>
             <Link to="/dashboard" className={`nav-link ${isActive('/dashboard')}`}>Dashboard</Link>
+<Link to="/casino" className={`nav-link ${isActive('/casino')}`}>🎮 Casino</Link>
             {user.role === 'admin' && (
               <Link to="/admin" className={`nav-link nav-admin ${isActive('/admin')}`}>Admin</Link>
             )}
