@@ -22,6 +22,7 @@ app.use('/api/bets', require('./routes/bets'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/transactions', require('./routes/transactions'));
 app.use('/api/sessions', require('./routes/sessions'));
+app.use('/api/casino', require('./routes/casino'));
 
 app.get('/api/health', (req, res) => res.json({ status: 'LivePointPredict running!' }));
 
