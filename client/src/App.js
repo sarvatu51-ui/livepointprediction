@@ -9,8 +9,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Leaderboard from './pages/Leaderboard';
+import CasinoPage from './pages/CasinoPage';
 import Admin from './pages/Admin';
 import MatchDetail from './pages/MatchDetail';
+
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -47,6 +49,7 @@ const AppRoutes = () => {
         <Route path="/match/:id" element={<MatchDetail />} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+<Route path="/casino" element={<ProtectedRoute><CasinoPage /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
